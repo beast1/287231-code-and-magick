@@ -17,7 +17,7 @@
         <polygon points="19 67 19 59 14 59 14 82 9 82 9 86 23 86 23 67 19 67"/>
         <polygon points="19 59 19 67 23 67 23 86 48 86 48 54 19 54 19 59"/>
       </g>
-      <g id="wizard-head">
+      <svg id="wizard-head">
         <polygon points="48 86 53 86 53 15 58 15 58 10 62 10 62 5 58 5 58 10 48 10 48 5 43 5 43 10 48 10 48 14 48 86"
                  fill="#be3827"/>
         <polygon points="9 37 19 37 19 23 48 23 48 28 53 28 53 42 48 42 48 51 14 51 14 46 9 46 9 37"
@@ -30,7 +30,7 @@
         <polygon
           points="0 47 9 47 9 38 19 38 19 24 48 24 48 28 53 28 53 18 48 18 48 13 14 13 14 18 9 18 9 23 5 23 5 38 0 38 0 47"
           fill="#bec1c3"/>
-      </g>
+      </svg>
       <g id="wizard-eyes">
         <rect x="28" y="33" width="5" height="5"/>
         <rect x="43" y="33" width="5" height="5"/>
@@ -170,22 +170,26 @@
   </div>
 </template>
 <script>
+  'use strict';
   var fireballSize = 22;
+  var wizardSpeed = 3;
+  var wizardWidth = 70;
+
   var getFireballSpeed = function(left) {
     return left ? 5 : 2;
   };
 
-  var wizardSpeed = 3;
-  var wizardWidth = 70;
+  var getWizardHeight = function() {
+    var WIZARD_WIDTH_SCALE = 1.337;
+    return WIZARD_WIDTH_SCALE * wizardWidth;
+  };
 
-  var getWizardHeight = function(wizardWidth) {
-    return 1.337 * wizardWidth;
-  };
   var getWizardX = function(width) {
-    return width / 2 - wizardWidth / 2;
+    return (width - wizardWidth) / 2;
   };
+
   var getWizardY = function(height) {
-    return height / 3 - getWizardHeight(wizardWidth) / 2;
+    return height / 3 - getWizardHeight() / 2;
   };
 </script>
 <script src="js/game.js"></script>
